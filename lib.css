@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+  background-color: #4b3d4f;
+}
+
+.header {
+  height: 15vh;
+  background-color: #868092;
+  
+  display: flex;
+  align-items: center;
+   
+   justify-content: center;
+}
+.submit{
+background-color: #ceb5d4;
+
+}
+.submit:hover{
+    background-color: #7d9fc0;
+}
+.books{
+  display: grid;
+  grid-template-columns: 9rem 9rem 9rem 9rem 9rem;
+  gap: 1rem;
+}
+input{
+  background-color: #868092;
+  border-radius: 0.7rem;
+}
