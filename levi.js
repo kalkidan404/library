@@ -4,13 +4,14 @@ let write=document.getElementById("author");
 let num=document.getElementById("pages");
 let submit=document.querySelector(".submit");
 let library=[];
-function lab(author,title,pages,read=false){
+class lab{
+constructor(author,title,pages,read=false){
     this.author=author;
     this.title=title;
     this.pages=pages;
     this.read=read;
      this.id = crypto.randomUUID();
-}
+}}
 lab.prototype.reader=function(){
     return `${this.title} written by ${this.author} of ${this.pages} of id=${this.id} <button class="remove" data-id=${this.id}>remove</button><button class="read" data-id=${this.id}>${this.read ? "Read" : "Unread"}</button>`
 }
@@ -83,3 +84,4 @@ own.addEventListener("mouseenter", () => {
 own.addEventListener("mouseleave", () => {
   own.style.transform = "scale(1)";
 });
+ 
