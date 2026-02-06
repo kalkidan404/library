@@ -11,16 +11,18 @@ constructor(author,title,pages,read=false){
     this.pages=pages;
     this.read=read;
      this.id = crypto.randomUUID();
-}}
-lab.prototype.reader=function(){
+}
+reader(){
     return `${this.title} written by ${this.author} of ${this.pages} of id=${this.id} <button class="remove" data-id=${this.id}>remove</button><button class="read" data-id=${this.id}>${this.read ? "Read" : "Unread"}</button>`
 }
+toggleread(){
+    this.read=!this.read;
+}}
+
 
 const book1=new lab("destovesky", "crime",700);
 library.push(book1);
-lab.prototype.toggleread=function(){
-    this.read=!this.read;
-}
+
 submit.addEventListener("click",(event)=>{
     event.preventDefault();
     let writer=write.value;
@@ -46,6 +48,15 @@ function displayBooks() {
     own.style.backgroundColor = "#b26c86";
     own.style.padding = "0.5rem";
     own.style.lineHeight = "1.2rem";
+own.style.transition = "transform 0.2s ease";
+
+own.addEventListener("mouseenter", () => {
+  own.style.transform = "scale(1.05)";
+});
+
+own.addEventListener("mouseleave", () => {
+  own.style.transform = "scale(1)";
+});
 
     own.innerHTML = book.reader(); // get HTML from prototype
     books.appendChild(own);
@@ -70,18 +81,5 @@ book.toggleread();
  e.target.textContent = book.read ? "Read" : "Unread";
 
 })
-const own = document.querySelector(".own"); // your element
 
-// Smooth transition
-own.style.transition = "transform 0.2s ease";
-
-// Zoom in on hover
-own.addEventListener("mouseenter", () => {
-  own.style.transform = "scale(1.05)"; // slightly bigger
-});
-
-// Reset on mouse leave
-own.addEventListener("mouseleave", () => {
-  own.style.transform = "scale(1)";
-});
  
