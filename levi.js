@@ -28,9 +28,24 @@ submit.addEventListener("click",(event)=>{
     let writer=write.value;
     let number=num.value;
     let named=bookish.value;
-    if(!writer||!number||!named){
-        alert("please fill everything");
-    }else{
+    write.setCustomValidity("");
+    num.setCustomValidity("");
+    bookish.setCustomValidity("");
+ if (!writer || !number || !named) {
+        write.style.border = "1px solid red";
+        num.style.border = "1px solid red";
+        bookish.style.border = "1px solid red";
+         if (!writer) write.setCustomValidity("Please fill this field");
+        if (!number) num.setCustomValidity("Please fill this field");
+        if (!named) bookish.setCustomValidity("Please fill this field");
+         write.reportValidity();
+        num.reportValidity();
+        bookish.reportValidity();
+        return;
+    }
+
+    
+    else{
         let total=new lab( writer,named,number)
         library.push(total);
         displayBooks();
